@@ -12,19 +12,33 @@ def dict_dataset():
 def Courbe_dataset():
     import pandas as pd
     import matplotlib.pyplot as plt
+    #Pour le choix entre graphique en bandes et graphiques linéaire
+    
 
+
+    #On définit les datas
     data = pd.read_csv('installed-geothermal-capacity.csv')
-    x = data['Entity']  
-    y1 = data['Year']  
+    x = data['Entity']    
     y2 = data['Geothermal energy capacity'] 
 
-    plt.plot(x, y1, label='Courbe 1')
-    plt.plot(x, y2, label='Courbe 2')
+    #Concernant les titres (abcisses , ordonnées et titre de courbes)
+    plt.title('Energie géothermique installé par continents (2000-2022)')
+    plt.xlabel('Continents')
+    plt.ylabel("Energies géothermique installé(Mégawatts)")
 
-    plt.xlabel('Entity')
-    plt.ylabel('Geothermal energy capacity/Years')
-    plt.title('Graphique avec Courbes')
-    plt.legend()
-    plt.grid(True)
-
-    plt.show()
+    while True:
+        choix=int(input("\nEntrez 1 pour le diagramme en bandes et 2 pour le diagramme linéaire : "))
+        if choix==1:
+            #bar pour le diagramme en bandes
+            plt.bar(x,y2,label="Energie en fonction des continents") #ca initialise le diagramme sous forme de bandes
+            plt.legend() # Ca met la légende 
+            plt.show() #On affiche le diagramme
+            break
+        elif choix==2:
+            #plot pour le diagramme linéaire
+            plt.plot(x,y2,label="Energie en fonction des continents")
+            plt.legend()
+            plt.show()
+            break
+        else:
+            print("\nEntrez 1 ou 2 ")

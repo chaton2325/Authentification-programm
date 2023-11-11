@@ -166,6 +166,7 @@ def mdp():
 
 #La fonction pour vérifier si
 def choice(): 
+    print("\n\t\tBienvenu sur la phase d'enregistrement")
     global email       
     while True:
         email=input(Fore.RED + "entrez votre email: ")
@@ -178,7 +179,7 @@ def choice():
     
 
 
-
+#Pour faire un reset des couleurs de colorama pour ne pas que ce soit continu
 print(Style.RESET_ALL)
 
 
@@ -186,7 +187,7 @@ print(Style.RESET_ALL)
 def authentification():
     global global_connect
     list_user=[]
-    print("Bienvenu sur la phase d'authentification\n")
+    print("\t\tBienvenu sur la phase d'authentification\n")
     email=input("entrez votre email: ")
     passwords=input("entrez votre mot de passe: ")
 
@@ -208,11 +209,14 @@ def authentification():
     if lv==[]:
         print("identifiant non trouvé")
         while True:
-            choix=int(input("Entrez 1 pour enregistrer un nouvel utilisateur et 2 pour quitter: "))
+            choix=int(input("Entrez 1 pour enregistrer un nouvel utilisateur ,2 pour réessayer et 3 pour quitter: "))
             if choix==1:
                 choice()
                 break
             elif choix==2:
+                authentification()
+                break
+            elif choix==3:
                 print("Merci d'etre passé")
                 break
             else:
